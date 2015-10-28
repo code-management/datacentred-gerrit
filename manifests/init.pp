@@ -75,6 +75,11 @@
 #
 # [*war_url*]
 #   URL to use when downloading Gerrit war file
+#
+# [*s3_bucket*]
+#   S3 Bucket from which to download Gerrit war file 
+#   If this param is passed, $war_url is ignored. 
+#
 class gerrit (
   $version                    = $gerrit::params::version,
   $jdk_version                = $gerrit::params::jdk_version,
@@ -100,6 +105,7 @@ class gerrit (
   $ldap_group_base            = $gerrit::params::ldap_group_base,
   $ldap_group_member_pattern  = $gerrit::params::ldap_group_member_pattern,
   $war_url                    = $gerrit::params::war_url,
+  $s3_bucket                  = $gerrit::params::s3_bucket,
 ) inherits gerrit::params {
 
   $auth_type_array = [
@@ -136,6 +142,7 @@ class gerrit (
   validate_string($ldap_email_address)
   validate_string($ldap_group_base)
   validate_string($ldap_group_member_pattern)
+  validate_string($s3_bucket)
 
   $app = "${home}/review"
   $dir = "${home}/${version}"
