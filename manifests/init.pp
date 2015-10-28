@@ -73,6 +73,8 @@
 # [*ldap_group_member_pattern*]
 #   Pattern to lookup group memberships
 #
+# [*war_url*]
+#   URL to use when downloading Gerrit war file
 class gerrit (
   $version                    = $gerrit::params::version,
   $jdk_version                = $gerrit::params::jdk_version,
@@ -97,6 +99,7 @@ class gerrit (
   $ldap_email_address         = $gerrit::params::ldap_email_address,
   $ldap_group_base            = $gerrit::params::ldap_group_base,
   $ldap_group_member_pattern  = $gerrit::params::ldap_group_member_pattern,
+  $war_url                    = $gerrit::params::war_url,
 ) inherits gerrit::params {
 
   $auth_type_array = [

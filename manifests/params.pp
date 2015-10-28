@@ -27,5 +27,5 @@ class gerrit::params {
   $ldap_email_address = 'mail'
   $ldap_group_base = undef
   $ldap_group_member_pattern = "(&(objectClass=group)(member=\${dn}))"
-
+  $war_url = "http://gerrit-releases.storage.googleapis.com/gerrit-${version}.war"
 }

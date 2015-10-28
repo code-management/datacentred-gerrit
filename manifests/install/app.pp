@@ -6,7 +6,7 @@ class gerrit::install::app {
 
   include ::gerrit
 
-  wget::fetch { "http://gerrit-releases.storage.googleapis.com/gerrit-${gerrit::version}.war":
+  wget::fetch { "${gerrit::war_url}":
     destination => $gerrit::jar,
   }
 
