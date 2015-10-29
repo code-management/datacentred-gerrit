@@ -13,7 +13,7 @@ class gerrit::install::app {
       path => '/usr/local/bin',
       logoutput => true,
     } -> 
-    exec { "chown ${gerrit::user}:${gerrit::user} $gerrit::jar":
+    exec { "chown ${gerrit::user}:${gerrit::user} $gerrit::jar && chmod 774 $gerrit::jar":
       path => '/bin'
     }
     
