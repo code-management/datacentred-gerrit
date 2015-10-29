@@ -16,6 +16,7 @@ class gerrit::configure::app {
     user    => $gerrit::user,
     creates => "${gerrit::app}/bin/gerrit.sh",
     logoutput => true,
+    tries => 2,
   } ->
 
   file { "/etc/init.d/${gerrit::service}":
