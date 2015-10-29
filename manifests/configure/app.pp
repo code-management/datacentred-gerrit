@@ -7,7 +7,7 @@ class gerrit::configure::app {
   include ::gerrit
 
   $gerrit_site = $gerrit::app
-  $init_jar = "${gerrit::app}/bin/gerrit.war"
+  $init_jar = "${gerrit::dir}/gerrit-${gerrit::version}.war"
   $init_args = "init -d ${gerrit::app} --batch --no-auto-start"
 
   exec { 'gerrit init':
