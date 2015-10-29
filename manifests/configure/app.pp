@@ -11,6 +11,7 @@ class gerrit::configure::app {
   $init_args = "init -d ${gerrit::app} --batch --no-auto-start"
 
   exec { 'gerrit init':
+    path => '/usr/bin',
     command => "java -jar ${init_jar} ${init_args}",
     user    => $gerrit::user,
     creates => "${gerrit::app}/bin/gerrit.sh",

@@ -17,6 +17,7 @@ class gerrit::configure::db {
       } ~>
 
       exec { 'gerrit init mysql':
+        path => '/usr/bin',
         command     => "java -jar ${init_jar} ${init_args}",
         user        => $gerrit::user,
         refreshonly => true,
