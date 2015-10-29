@@ -18,6 +18,7 @@ class gerrit::install::app {
       path => '/usr/local/bin',
       logoutput => true,
       before => Exec['fix_war_perms'],
+      creates => $gerrit::jar,
     }     
 
   } else {
