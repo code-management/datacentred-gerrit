@@ -11,6 +11,7 @@ class gerrit::install::users {
     home   => $gerrit::home,
     shell  => '/bin/false',
     system => true,
+    groups => $gerrit::user_groups,
   }
 
 }

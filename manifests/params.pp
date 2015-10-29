@@ -7,6 +7,7 @@ class gerrit::params {
   $version = '2.9.3'
   $jdk_version = '7'
   $user = 'gerrit2'
+  $user_groups = undef
   $home = '/opt/gerrit'
   $service = 'gerrit'
   $db_manage = true

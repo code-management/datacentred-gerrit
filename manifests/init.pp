@@ -13,6 +13,9 @@
 # [*user*]
 #   Unprivilieged user to run as
 #
+# [*user_groups*]
+#   Groups the $user should belong to
+#
 # [*home*]
 #   Gerrit user's home and install directory
 #
@@ -84,6 +87,7 @@ class gerrit (
   $version                    = $gerrit::params::version,
   $jdk_version                = $gerrit::params::jdk_version,
   $user                       = $gerrit::params::user,
+  $user_groups                = $gerrit::params::user_groups,
   $home                       = $gerrit::params::home,
   $service                    = $gerrit::params::service,
   $db_manage                  = $gerrit::params::db_manage,
@@ -122,6 +126,7 @@ class gerrit (
   validate_string($version)
   validate_string($jdk_version)
   validate_string($user)
+  validate_array($user_groups)
   validate_absolute_path($home)
   validate_string($service)
   validate_bool($db_manage)
