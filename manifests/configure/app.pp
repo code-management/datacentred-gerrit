@@ -8,6 +8,7 @@ class gerrit::configure::app {
 
   $gerrit_site = $gerrit::app
   $init_jar = "${gerrit::dir}/gerrit-${gerrit::version}.war"
+  $init_schema_jar = "${gerrit::app}/bin/gerrit.war"
   $init_args = "init -d ${gerrit::app} --batch --no-auto-start"
 
   exec { 'gerrit init':
@@ -15,6 +16,13 @@ class gerrit::configure::app {
     command => "java -jar ${init_jar} ${init_args}",
     user    => $gerrit::user,
     creates => "${gerrit::app}/bin/gerrit.sh",
+    logoutput => true,
+    tries => 2,
+  } ->
+  exec { 'gerrit init schema':
+    path => '/usr/bin',
+    command => "java -jar ${init_schema_jar} ${init_args}",
+    user    => $gerrit::user,
     logoutput => true,
     tries => 2,
   } ->
