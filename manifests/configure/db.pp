@@ -21,6 +21,7 @@ class gerrit::configure::db {
         command     => "java -jar ${init_jar} ${init_args}",
         user        => $gerrit::user,
         refreshonly => true,
+        logoutput => true,
       }
 
     }

@@ -15,6 +15,7 @@ class gerrit::configure::app {
     command => "java -jar ${init_jar} ${init_args}",
     user    => $gerrit::user,
     creates => "${gerrit::app}/bin/gerrit.sh",
+    logoutput => true,
   } ->
 
   file { "/etc/init.d/${gerrit::service}":
