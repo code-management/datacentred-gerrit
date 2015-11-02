@@ -30,4 +30,14 @@ class gerrit::params {
   $ldap_group_member_pattern = "(&(objectClass=group)(member=\${dn}))"
   $war_url = "http://gerrit-releases.storage.googleapis.com/gerrit-${version}.war"
   $s3_bucket = undef
+
+  $sendemail_enable = true
+  $sendemail_from = 'MIXED'
+  $smtp_server = 'localhost'
+  $smtp_server_port = undef
+  $smtp_user = undef
+  $smtp_pass = undef
+  $smtp_ssl_verify = undef
+  $smtp_encryption = undef
+
 }

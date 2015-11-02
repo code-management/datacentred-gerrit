@@ -83,6 +83,30 @@
 #   S3 Bucket from which to download Gerrit war file 
 #   If this param is passed, $war_url is ignored. 
 #
+# [*sendemail_enable*]
+#   If false Gerrit will not send email messages, for any reason, and all other properties of section sendemail are ignored.
+#
+# [*sendemail_from*]
+#   From field for generated emails
+#
+# [*smtp_server*]
+#   SMTP mail server
+#
+# [*smtp_server_port*]
+#   Port to use when contacting SMTP server  
+#
+# [*smtp_user*]
+#   Username for SMTP authentication
+#
+# [*smtp_pass*]
+#   Password for SMTP authentication
+#
+# [*smtp_sll_verify*]
+#   Whether to verify SSL connection if smtp_encryption is used
+#
+# [*smtp_encryption*]
+#   Encryption method to use for SMTP connections
+#
 class gerrit (
   $version                    = $gerrit::params::version,
   $jdk_version                = $gerrit::params::jdk_version,
@@ -110,6 +134,14 @@ class gerrit (
   $ldap_group_member_pattern  = $gerrit::params::ldap_group_member_pattern,
   $war_url                    = $gerrit::params::war_url,
   $s3_bucket                  = $gerrit::params::s3_bucket,
+  $sendemail_enable           = $gerrit::params::sendemail_enable,
+  $sendemail_from             = $gerrit::params::sendemail_from,
+  $smtp_server                = $gerrit::params::smtp_server,
+  $smtp_server_port           = $gerrit::params::smtp_server_port,
+  $smtp_user                  = $gerrit::params::smtp_user,
+  $smtp_pass                  = $gerrit::params::smtp_pass,
+  $smtp_ssl_verify            = $gerrit::params::smtp_ssl_verify,
+  $smtp_encryption            = $gerrit::params::smtp_encryption,
 ) inherits gerrit::params {
 
   $auth_type_array = [
@@ -122,6 +154,10 @@ class gerrit (
     'LDAP_BIND',
   ]
   $auth_type_re = join($auth_type_array, '|')
+  $smtp_encryption_array = [
+    'ssl',
+    'tls'
+  ]
   
   validate_string($version)
   validate_string($jdk_version)
@@ -148,6 +184,11 @@ class gerrit (
   validate_string($ldap_group_base)
   validate_string($ldap_group_member_pattern)
   validate_string($s3_bucket)
+  
+  if (! (is_domain_name($smtp_server) or is_ip_address($smtp_server))) {
+    fail("Failed to validate param smtp_server. ${smtp_server} is not an IP address or domain name")
+  }
+
 
   $app = "${home}/review"
   $dir = "${home}/${version}"
