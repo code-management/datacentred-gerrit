@@ -1,4 +1,5 @@
 #Gerrit
+[![Build Status](https://travis-ci.org/evidex/datacentred-gerrit.svg)](https://travis-ci.org/evidex/datacentred-gerrit)
 
 ####Table of Contents
 
