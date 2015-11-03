@@ -77,6 +77,18 @@ class gerrit::configure::config {
       value => $gerrit::ldap_group_member_pattern,
     }
 
+    gerrit::config { 'ldap/username':
+      value => $gerrit::ldap_username,
+    }
+
+    gerrit::config { 'ldap/password':
+      value => $gerrit::ldap_password,
+    }
+
+    gerrit::config { 'ldap/sslVerify':
+      value => $gerrit::ldap_ssl_verify,  
+    }
+
   }
 
   # SENDEMAIL

@@ -76,6 +76,16 @@
 # [*ldap_group_member_pattern*]
 #   Pattern to lookup group memberships
 #
+# [*ldap_username*]
+#   Username to bind to the LDAP server with. If not set, an anonymous connection to the LDAP server is attempted.
+#
+# [*ldap_password*]
+#   Password for the user identified by $ldap_username. If not set, an anonymous (or passwordless) connection to the LDAP server is attempted.
+#
+# [*ldap_ssl_verify*]
+#   If false and ldap.server is an ldaps:// style URL, Gerrit will not verify the server certificate when it connects to perform a query.
+#   By default, true, requiring the certificate to be verified.
+#
 # [*war_url*]
 #   URL to use when downloading Gerrit war file
 #
@@ -83,8 +93,8 @@
 #   S3 Bucket from which to download Gerrit war file 
 #   If this param is passed, $war_url is ignored. 
 #
-# [*sendemail_disable*]
-#   If true Gerrit will not send email messages, for any reason, and all other properties of section sendemail are ignored.
+# [*sendemail_enable*]
+#   If false Gerrit will not send email messages, for any reason, and all other properties of section sendemail are ignored.
 #
 # [*sendemail_from*]
 #   From field for generated emails
@@ -132,6 +142,9 @@ class gerrit (
   $ldap_email_address         = $gerrit::params::ldap_email_address,
   $ldap_group_base            = $gerrit::params::ldap_group_base,
   $ldap_group_member_pattern  = $gerrit::params::ldap_group_member_pattern,
+  $ldap_username              = $gerrit::params::ldap_username,
+  $ldap_password              = $gerrit::params::ldap_password,
+  $ldap_ssl_verify            = $gerrit::params::ldap_ssl_verify,
   $war_url                    = $gerrit::params::war_url,
   $s3_bucket                  = $gerrit::params::s3_bucket,
   $sendemail_enable           = $gerrit::params::sendemail_enable,
@@ -184,6 +197,9 @@ class gerrit (
   validate_string($ldap_email_address)
   validate_string($ldap_group_base)
   validate_string($ldap_group_member_pattern)
+  validate_string($ldap_username)
+  validate_string($ldap_password)
+  validate_bool($ldap_ssl_verify)
   validate_string($s3_bucket)
   
   if (! (is_domain_name($smtp_server) or is_ip_address($smtp_server))) {
