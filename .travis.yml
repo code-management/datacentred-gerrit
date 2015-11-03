@@ -8,7 +8,7 @@ rvm:
   - 2.1.0
   - 2.2.0
 script: 'puppet parser validate $(find . manifests -name "*.pp")'
-script: 'puppet-lint --no-autoloader_layout-check --with-filename manifests'
+script: 'puppet-lint --no-only_variable_string-check --no-autoloader_layout-check --with-filename manifests'
 env:
   - PUPPET_VERSION=4.0.0 STRICT_VARIABLES=yes
   - PUPPET_VERSION=4.2.2 STRICT_VARIABLES=yes
