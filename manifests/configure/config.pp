@@ -6,6 +6,7 @@ class gerrit::configure::config {
 
   include ::gerrit
 
+  # GERRIT
   gerrit::config { 'gerrit/basePath':
     value => $gerrit::basepath,
   }
@@ -14,6 +15,7 @@ class gerrit::configure::config {
     value => "${gerrit::weburl}:${gerrit::webport}/",
   }
 
+  # DATABASE
   gerrit::config { 'database/type':
     value => $gerrit::db_provider,
   }
@@ -34,14 +36,17 @@ class gerrit::configure::config {
     value => $gerrit::db_password,
   }
 
+  # INDEX
   gerrit::config { 'index/type':
     value => $gerrit::index_type,
   }
 
+  # AUTH
   gerrit::config { 'auth/type':
     value => $gerrit::auth_type,
   }
 
+  # LDAP
   if $gerrit::auth_type == 'LDAP' {
 
     gerrit::config { 'ldap/server':
@@ -74,6 +79,7 @@ class gerrit::configure::config {
 
   }
 
+  # SENDEMAIL
   gerrit::config { 'sendemail/enable':
     value => $gerrit::sendemail_enable,
   }
