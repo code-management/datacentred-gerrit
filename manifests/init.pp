@@ -83,8 +83,8 @@
 #   S3 Bucket from which to download Gerrit war file 
 #   If this param is passed, $war_url is ignored. 
 #
-# [*sendemail_enable*]
-#   If false Gerrit will not send email messages, for any reason, and all other properties of section sendemail are ignored.
+# [*sendemail_disable*]
+#   If true Gerrit will not send email messages, for any reason, and all other properties of section sendemail are ignored.
 #
 # [*sendemail_from*]
 #   From field for generated emails

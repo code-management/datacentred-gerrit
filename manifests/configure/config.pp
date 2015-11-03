@@ -74,4 +74,37 @@ class gerrit::configure::config {
 
   }
 
+  gerrit::config { 'sendemail/enable':
+    value => $gerrit::sendemail_enable,
+  }
+
+  gerrit::config { 'sendemail/smtpServer':
+    value => $gerrit::smtp_server,
+  }
+
+  gerrit::config { 'sendemail/smtpServerPort':
+    value => $gerrit::smtp_server_port,
+  }
+  
+  gerrit::config { 'sendemail/smtpUser':
+    value => $gerrit::smtp_user,
+  }
+
+  gerrit::config { 'sendemail/smtpPass':
+    value => $gerrit::smtp_pass,
+  }
+  
+  gerrit::config { 'sendemail/sslVerify':
+    value => $gerrit::smtp_ssl_verify,
+  }
+
+  gerrit::config { 'sendemail/smtpEncryption':
+    value => $gerrit::smtp_encryption,
+  }
+
+  gerrit::config { 'sendemail/from':
+    value => $gerrit::sendemail_from,
+  }
+
+
 }

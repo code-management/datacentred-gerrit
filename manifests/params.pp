@@ -37,7 +37,7 @@ class gerrit::params {
   $smtp_server_port = undef
   $smtp_user = undef
   $smtp_pass = undef
-  $smtp_ssl_verify = undef
+  $smtp_ssl_verify = true
   $smtp_encryption = undef
 
 }
