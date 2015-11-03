@@ -6,7 +6,7 @@ class gerrit::install::app {
 
   include ::gerrit
 
-  exec { "fix_war_perms":
+  exec { 'fix_war_perms':
     command => "chown ${gerrit::user}:${gerrit::user} $gerrit::jar && chmod 774 $gerrit::jar",
     path    => '/bin',
   }

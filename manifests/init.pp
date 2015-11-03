@@ -77,13 +77,16 @@
 #   Pattern to lookup group memberships
 #
 # [*ldap_username*]
-#   Username to bind to the LDAP server with. If not set, an anonymous connection to the LDAP server is attempted.
+#   Username to bind to the LDAP server with. If not set, an anonymous 
+#   connection to the LDAP server is attempted.
 #
 # [*ldap_password*]
-#   Password for the user identified by $ldap_username. If not set, an anonymous (or passwordless) connection to the LDAP server is attempted.
+#   Password for the user identified by $ldap_username. If not set, an 
+#   anonymous (or passwordless) connection to the LDAP server is attempted.
 #
 # [*ldap_ssl_verify*]
-#   If false and ldap.server is an ldaps:// style URL, Gerrit will not verify the server certificate when it connects to perform a query.
+#   If false and ldap.server is an ldaps:// style URL, Gerrit will not 
+#   verify the server certificate when it connects to perform a query.
 #   By default, true, requiring the certificate to be verified.
 #
 # [*war_url*]
@@ -94,7 +97,8 @@
 #   If this param is passed, $war_url is ignored. 
 #
 # [*sendemail_enable*]
-#   If false Gerrit will not send email messages, for any reason, and all other properties of section sendemail are ignored.
+#   If false Gerrit will not send email messages, for any reason, and all 
+#   other properties of section sendemail are ignored.
 #
 # [*sendemail_from*]
 #   From field for generated emails
@@ -203,7 +207,7 @@ class gerrit (
   validate_string($s3_bucket)
   
   if (! (is_domain_name($smtp_server) or is_ip_address($smtp_server))) {
-    fail("Failed to validate param smtp_server. ${smtp_server} is not an IP address or domain name")
+    fail("Failed to validate param smtp_server. [${smtp_server}]")
   }
   validate_integer($smtp_server_port)
   validate_string($smtp_user)
