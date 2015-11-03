@@ -86,7 +86,7 @@ class gerrit::configure::config {
     }
 
     gerrit::config { 'ldap/sslVerify':
-      value => $gerrit::ldap_ssl_verify,  
+      value => $gerrit::ldap_ssl_verify,
     }
 
   }
@@ -103,7 +103,7 @@ class gerrit::configure::config {
   gerrit::config { 'sendemail/smtpServerPort':
     value => $gerrit::smtp_server_port,
   }
-  
+
   gerrit::config { 'sendemail/smtpUser':
     value => $gerrit::smtp_user,
   }
@@ -111,7 +111,7 @@ class gerrit::configure::config {
   gerrit::config { 'sendemail/smtpPass':
     value => $gerrit::smtp_pass,
   }
-  
+
   gerrit::config { 'sendemail/sslVerify':
     value => $gerrit::smtp_ssl_verify,
   }
