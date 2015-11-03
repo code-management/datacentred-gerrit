@@ -8,20 +8,19 @@ rvm:
   - 2.1.0
   - 2.2.0
 script: 'puppet parser validate $(find . manifests -name "*.pp")'
-scrpt: 'puppet-lint --no-autoloader_layout-check --with-filename manifests'
+script: 'puppet-lint --no-autoloader_layout-check --with-filename manifests'
 env:
-  - PUPPET_VERSION=3.8.0 STRICT_VARIABLES=yes FUTURE_PARSER=yes
   - PUPPET_VERSION=4.0.0 STRICT_VARIABLES=yes
   - PUPPET_VERSION=4.2.2 STRICT_VARIABLES=yes
 matrix:
   exclude:
   # Ruby 2.1.0
   - rvm: 2.1.0
-    env: PUPPET_VERSION="~> 3.2.0"
+    env: PUPPET_VERSION="> 3.2.0"
   - rvm: 2.1.0
-    env: PUPPET_VERSION="~> 3.3.0"
+    env: PUPPET_VERSION="> 3.3.0"
   - rvm: 2.1.0
-    env: PUPPET_VERSION="~> 3.4.0"
+    env: PUPPET_VERSION="> 3.4.0"
   - rvm: 2.2.0
-    env: PUPPET_VERSION="~> 4.2.0"
+    env: PUPPET_VERSION="> 4.2.0"
 gemfile: .gemfile
