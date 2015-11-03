@@ -12,19 +12,19 @@ class gerrit::configure::app {
   $init_args = "init -d ${gerrit::app} --batch --no-auto-start"
 
   exec { 'gerrit init':
-    path => '/usr/bin',
-    command => "java -jar ${init_jar} ${init_args}",
-    user    => $gerrit::user,
-    creates => "${gerrit::app}/bin/gerrit.sh",
+    path      => '/usr/bin',
+    command   => "java -jar ${init_jar} ${init_args}",
+    user      => $gerrit::user,
+    creates   => "${gerrit::app}/bin/gerrit.sh",
     logoutput => true,
-    tries => 2,
+    tries     => 2,
   } ->
   exec { 'gerrit init schema':
-    path => '/usr/bin',
-    command => "java -jar ${init_schema_jar} ${init_args}",
-    user    => $gerrit::user,
+    path      => '/usr/bin',
+    command   => "java -jar ${init_schema_jar} ${init_args}",
+    user      => $gerrit::user,
     logoutput => true,
-    tries => 2,
+    tries     => 2,
   } ->
 
   file { "/etc/init.d/${gerrit::service}":

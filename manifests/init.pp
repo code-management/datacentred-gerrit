@@ -205,7 +205,7 @@ class gerrit (
   if (! (is_domain_name($smtp_server) or is_ip_address($smtp_server))) {
     fail("Failed to validate param smtp_server. ${smtp_server} is not an IP address or domain name")
   }
-  validate_integer($smtp_port)
+  validate_integer($smtp_server_port)
   validate_string($smtp_user)
   validate_string($smtp_pass)
   validate_bool($smtp_ssl_verify)
