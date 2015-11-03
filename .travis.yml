@@ -13,4 +13,5 @@ env:
 notifications:
   email: false
 gemfile: .gemfile
+sudo: required
 dist: trusty
