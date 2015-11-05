@@ -25,7 +25,7 @@
 # [*db_manage*]
 #   Whether this module manages the database
 #
-# [*db_provider*]
+# [*db_type*]
 #   What flavour of database to provision
 #
 # [*db_hostname*]
@@ -129,8 +129,9 @@ class gerrit (
   $home                       = $gerrit::params::home,
   $service                    = $gerrit::params::service,
   $db_manage                  = $gerrit::params::db_manage,
-  $db_provider                = $gerrit::params::db_provider,
+  $db_type                    = $gerrit::params::db_type,
   $db_hostname                = $gerrit::params::db_hostname,
+  $db_port                    = $gerrit::params::db_port,
   $db_database                = $gerrit::params::db_database,
   $db_username                = $gerrit::params::db_username,
   $db_password                = $gerrit::params::db_password,
@@ -184,8 +185,9 @@ class gerrit (
   validate_absolute_path($home)
   validate_string($service)
   validate_bool($db_manage)
-  validate_re($db_provider, '^POSTGRESQL|H2|MYSQL|JDBC$')
+  validate_re($db_type, '^POSTGRESQL|H2|MYSQL|JDBC$')
   validate_string($db_hostname)
+  validate_integer($db_port)
   validate_string($db_database)
   validate_string($db_username)
   validate_string($db_password)

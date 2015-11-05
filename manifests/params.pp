@@ -12,12 +12,6 @@ class gerrit::params {
   $user_groups = undef
   $home = '/opt/gerrit'
   $service = 'gerrit'
-  $db_manage = true
-  $db_provider = 'H2'
-  $db_hostname = 'localhost'
-  $db_database = 'reviewdb'
-  $db_username = 'gerrit2'
-  $db_password = 'password'
   $base_path = 'git'
   $weburl = "http://${::fqdn}"
   $webport = 8080
@@ -47,5 +41,13 @@ class gerrit::params {
   $smtp_pass = undef
   $smtp_ssl_verify = true
   $smtp_encryption = undef
+
+  # DATABASE
+  $db_manage = true
+  $db_type = 'H2'
+  $db_hostname = 'localhost'
+  $db_database = 'reviewdb'
+  $db_username = 'gerrit2'
+  $db_password = 'password'
 
 }

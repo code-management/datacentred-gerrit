@@ -6,7 +6,7 @@ class gerrit::install::deps {
 
   include ::gerrit
 
-  case $gerrit::db_provider {
+  case $gerrit::db_type {
     'MYSQL': {
       contain ::gerrit::install::deps::mysql
     }

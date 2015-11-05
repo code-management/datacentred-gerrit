@@ -17,11 +17,15 @@ class gerrit::configure::config {
 
   # DATABASE
   gerrit::config { 'database/type':
-    value => $gerrit::db_provider,
+    value => $gerrit::db_type,
   }
 
   gerrit::config { 'database/hostname':
     value => $gerrit::db_hostname,
+  }
+
+  gerrit::config { 'database/port':
+    value => $gerrit::db_port,
   }
 
   gerrit::config { 'database/database':

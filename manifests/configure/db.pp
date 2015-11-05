@@ -4,7 +4,7 @@
 #
 class gerrit::configure::db {
 
-  case $gerrit::db_provider {
+  case $gerrit::db_type {
 
     'MYSQL': {
 
